@@ -18,6 +18,28 @@ class App extends Component {
     this.refs.name.focus();
   }
 
+  fSubmit = e => {
+    e.preventDefault()
+    console.log('try')
+
+    let datas = this.state.datas;
+    let name = this.refs.name.value 
+    let address = this.refs.address.value 
+
+    let data = {
+      name, address
+    }
+
+    datas.push(data)
+
+    this.setState({
+      datas: datas
+    })
+
+    this.refs.myForm.reset() 
+    this.refs.name.focus()  
+  }
+
   render() {
     return (
       <div className="App">
