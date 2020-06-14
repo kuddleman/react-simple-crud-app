@@ -41,14 +41,24 @@ class App extends Component {
   }
 
   render() {
+    let datas = this.state.datas
     return (
       <div className="App">
         <h2>{ this.state.title }</h2>
-        <form ref="myform" className="myForm">
+        <form ref="myForm" className="myForm">
           <input type="text" ref="name" placeholder="your name" className="formField"/>
-          <input type="text" ref="adress" placeholder="your address" className="formField"/>
-          <button onClick={ this.fSubmit } className="myButton">submit</button>
+          <input type="text" ref="address" placeholder="your address" className="formField"/>
+          <button onClick={ (e) => this.fSubmit(e) } className="myButton">submit</button>
+          <pre>
 
+          </pre>
+            { datas.map(( data, i ) =>
+              <li key={i} className="myList">
+                { i+1 }. {data.name}, { data.address }
+                <button onClick={ () =>this.fRemove(i) } className="myButton">remove</button>
+                <button onClick={ () =>this.fEdit(i) } className="myButton">edit</button>
+              </li>
+            )}
         </form>
       </div>
     );
