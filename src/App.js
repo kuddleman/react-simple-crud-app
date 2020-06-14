@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      title: 'React Simple Crud App',
+      act: 0,
+      index: '',
+      datas: []
+    }
+  }
+
+  componentDidMount() {
+    this.refs.name.focus();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h2>{ this.state.title }</h2>
+        <form ref="myform" className="myForm">
+          <input type="text" ref="name" placeholder="your name" className="formField"/>
+          <input type="text" ref="adress" placeholder="your address" className="formField"/>
+          <button onClick={ this.fSubmit } className="myButton">submit</button>
+
+        </form>
+      </div>
+    );
+
+  }
 }
 
 export default App;
